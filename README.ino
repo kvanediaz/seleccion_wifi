@@ -3,18 +3,17 @@
   #include <WiFiManager.h>
   #include <WebServer.h>
   
-
-  const int PIN_AP = 2; // pulsador para volver al modo AP
-  void configModeCallback (WiFiManager *myWiFiManager) {
+  const int PIN_AP = 22; // pulsador para volver al modo AP
+  void configModeCallback (WiFiManager *myWiFiManager) {  //captura de cliente conectado
   Serial.println("Modo de configuración ingresado");
   Serial.println(WiFi.softAPIP());
   Serial.println(myEsp32WifiManager->getConfigPortalSSID());
   }
   //flag para salvar datos
-  bool shouldSaveConfig = false;
+  bool shouldSaveConfig = false;  //variable booleana
  
   //callback nos notifica guardar config
-  void saveConfigCallback () {
+  void saveConfigCallback () {  //Guarda la red a la que se accede
   Serial.println("Debería guardar la configuración");
   shouldSaveConfig = true;
   }
